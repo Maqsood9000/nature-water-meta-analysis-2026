@@ -1,4 +1,4 @@
-# Nanobubble Irrigation Enhances Crop Water Productivity by Rebalancing Rhizosphere Redox, Biogeochemistry and Hydraulic Function
+# Smart nanobubble irrigation relieves rhizosphere constraints to enhance water productivity
 
 **Running title:** A Systematic Meta-Analysis
 
@@ -40,7 +40,7 @@ Email: mofei@nwafu.edu.cn
 
 ## Abstract
 
-Conventional irrigation frequently depletes rhizosphere dissolved oxygen (DO), impairing root hydraulic conductance and photosynthetic carbon assimilation to constrain crop productivity under global freshwater scarcity. We conducted a systematic meta-analysis of **1,152 observations** across **six nanobubble types**, quantifying moderator-resolved effects on eight key functional domains. Nanobubble irrigation significantly elevated rhizosphere DO by 66–485% and urease activity by 55–203%, with responses strongly modulated by gas type, soil texture, and cultivation system. Oxygen nanobubbles stimulated the urease–nitrification cascade, improving nitrogen availability and plant water-use efficiency by 53–77%. Gas type dictated ROS dynamics: O₂ and ozone nanobubbles showed pro-oxidant effects, while CO₂ nanobubbles reduced oxidative stress by 284%. Structural equation modelling (R²=0.85) identified photosynthetic function as the dominant yield driver (β=0.64), with yield increasing by 42–53% across all crop groups. Our mechanistically quantified results support nanobubble irrigation as an effective precision strategy to enhance crop resilience under water limitation.
+Conventional irrigation frequently depletes rhizosphere dissolved oxygen (DO), impairing root hydraulic conductance and photosynthetic carbon assimilation to constrain crop productivity under global freshwater scarcity. We conducted a systematic meta-analysis of **1,152 observations** across **six nanobubble types**, quantifying moderator-resolved effects on rhizosphere physicochemistry and eight biological domains. Gas type, soil texture, generation technology, and cultivation system hierarchically controlled DO enrichment (66–485%), oxidation–reduction potential, and electrical conductivity (Fig. 1). The ensuing biological cascade (Fig. 2) encompassed urease stimulation (55–203%), root architecture improvement, and water-use efficiency gains of 53–77%. Gas type dictated reactive oxygen species polarity: O₂ and ozone nanobubbles were pro-oxidant, while CO₂ nanobubbles reduced oxidative stress by 284%. Structural equation modelling (Fig. 3; R² = 0.85) identified photosynthetic function as the dominant yield driver (β = 0.64), with yield increasing 42–53% across all crop groups. These results establish nanobubble irrigation as a precision strategy for enhancing crop resilience under water limitation.
 
 ---
 
@@ -49,44 +49,54 @@ Conventional irrigation frequently depletes rhizosphere dissolved oxygen (DO), i
 ```
 nature-water-meta-analysis-2026/
 │
-├── README.md                      # This file
-├── LICENSE                        # MIT License
-├── session_info.txt               # R session and package versions
+├── README.md                          # This file
+├── LICENSE                            # MIT License
+├── session_info.txt                   # R session and package versions
 │
-├── 1_study_DO.R                   # Dissolved oxygen analysis
-├── 1_study_EC.R                   # Electrical conductivity analysis
-├── 1_study_Redox.R                # Rhizosphere redox analysis
-├── 1_study_Soil_Oxygen.R          # Soil oxygen analysis
-├── 4_study_Paint_Belowground.R    # Belowground biomass analysis
-├── 4_study_Paint_aboveground.R    # Aboveground biomass analysis
-├── 5_study_Soil.R                 # Soil biogeochemistry analysis
-├── 6_study_yield.R                # Crop yield analysis
-├── Overall.R                      # Overall meta-analysis and SEM
-├── fig1_DO_Eh_9_feb.R             # Figure 1 generation
-├── fig2_9feb.R                    # Figure 2 generation
-├── fig3_Oxy_enz_OC.R              # Figure 3 generation
-├── fig4_plant.R                   # Figure 4 generation
-├── fig5_Plant_productivity.R      # Figure 5 generation
-└── funnel_plot.R                  # Publication bias — funnel plots
+├── data/
+│   ├── Final_meta_data.xlsx           # Complete meta-analysis dataset (1,152 obs.)
+│   └── Table_S1.xlsx      # Supplementary Data 1 — all effect sizes
+│
+├── analysis/
+│   ├── 1_study_DO.R                   # Dissolved oxygen analysis
+│   ├── 1_study_EC.R                   # Electrical conductivity analysis
+│   ├── 1_study_Redox.R                # Rhizosphere redox analysis
+│   ├── 1_study_Soil_Oxygen.R          # Soil oxygen analysis
+│   ├── 4_study_Paint_Belowground.R    # Belowground biomass analysis
+│   ├── 4_study_Paint_aboveground.R    # Aboveground biomass analysis
+│   ├── 5_study_Soil.R                 # Soil biogeochemistry analysis
+│   ├── 6_study_yield.R                # Crop yield analysis
+│   ├── Overall.R                      # Overall combined random-effects meta-analysis
+│   └── funnel_plot.R                  # Publication bias — funnel plots
+│
+└── figures/
+    ├── Fig1.R                         # Figure 1 — moderator-resolved physicochemistry
+    ├── Fig2.R                         # Figure 2 — biological cascade bar charts
+    └── Fig3_SEM                     # Figure 3 — structural equation model (SPSS AMOS)
 ```
 
 ---
 
 ## Data Description
 
-The dataset comprises **1,152 observations** extracted from peer-reviewed studies on nanobubble irrigation, covering:
+The dataset comprises **1,152 observations** extracted from 21 peer-reviewed studies on nanobubble irrigation, covering:
 
-- **Six nanobubble gas types**: O₂, CO₂, ozone, air, N₂, and mixed gases
-- **Eight functional domains**: rhizosphere DO, soil redox, urease activity, nitrification, oxidative stress (ROS), root hydraulic conductance, photosynthesis, and crop yield
-- **Crop groups**: cereals, vegetables, fruits, and legumes
-- **Soil textures**: sandy, loamy, and clay-loam
+- **Six nanobubble gas types**: O₂, CO₂, ozone, air, N₂, and H₂
+- **Three figures**: moderator-resolved physicochemistry (Fig. 1), biological cascade (Fig. 2), causal pathway model (Fig. 3)
+- **Eight biological domains**: soil enzyme activity, nutrient availability, root architecture, water-use efficiency, leaf traits, aboveground biomass, photosynthetic function, ROS status, and crop yield
+- **Crop groups**: cereals, vegetables, forage crops, and legumes
+- **Soil textures**: fine (clay/silt), medium (loam), sandy
 - **Cultivation systems**: field, greenhouse, and hydroponic
+
+All effect sizes, 95% confidence intervals, P values, and heterogeneity statistics are provided in `Table_S1.xlsx` (Supplementary Data 1).
 
 ---
 
 ## Code Description
 
 All analyses were conducted in **R version 4.2.1** on macOS (aarch64-apple-darwin20). Scripts are organised by functional domain:
+
+### Analysis scripts
 
 | Script | Description |
 |---|---|
@@ -95,16 +105,19 @@ All analyses were conducted in **R version 4.2.1** on macOS (aarch64-apple-darwi
 | `1_study_Redox.R` | Redox potential modulation by gas type and soil texture |
 | `1_study_Soil_Oxygen.R` | Soil oxygen dynamics under nanobubble irrigation |
 | `4_study_Paint_Belowground.R` | Belowground biomass and root architecture responses |
-| `4_study_Paint_aboveground.R` | Aboveground biomass and shoot growth responses |
+| `4_study_Paint_aboveground.R` | Aboveground biomass, leaf traits, and shoot growth responses |
 | `5_study_Soil.R` | Urease activity (55–203%), nitrification, and nitrogen cycling |
-| `6_study_yield.R` | Crop yield responses (42–53% increase) across all crop groups |
+| `6_study_yield.R` | Crop yield responses (42–53%) across pH regimes and crop groups |
 | `Overall.R` | Combined random-effects models, moderator analyses, and structural equation modelling (R²=0.85, β=0.64) |
-| `fig1_DO_Eh_9_feb.R` | Generates Figure 1 (DO and redox potential) |
-| `fig2_9feb.R` | Generates Figure 2 |
-| `fig3_Oxy_enz_OC.R` | Generates Figure 3 (oxidative stress and enzyme activity) |
-| `fig4_plant.R` | Generates Figure 4 (plant physiological responses) |
-| `fig5_Plant_productivity.R` | Generates Figure 5 (water-use efficiency and yield) |
 | `funnel_plot.R` | Publication bias assessment — funnel plots and Egger's test |
+
+### Figure scripts
+
+| Script | Figure | Description |
+|---|---|---|
+| `Fig1.R` | Fig. 1 | Moderator-resolved effects on rhizosphere DO, EC, and redox potential across six moderator categories (bubble size, cultivation system, generation method, soil texture, irrigation method, co-amendments) |
+| `Fig2.R` | Fig. 2 | Anatomy-based bar chart panels (a–i) showing carrier-gas-dependent biological cascade from soil biogeochemistry to crop yield, arranged alongside plant illustration |
+| `Fig3_SEM` | Fig. 3 | Structural equation model path diagram (generated in SPSS AMOS; R script not available) |
 
 ---
 
@@ -122,14 +135,18 @@ install.packages(c(
   "dmetar",         # v0.0.9  — meta-analysis tools
   "ggplot2",        # v3.5.0  — figure generation
   "dplyr",          # v1.1.4  — data wrangling
-  "tidyr",          # v1.3.1  — data reshaping
+  "cowplot",        # v1.1.1  — figure assembly
+  "scales",         # v1.3.0  — axis formatting
   "readxl",         # v1.4.3  — reading data files
+  "extrafont",      # v0.19   — Times New Roman font
+  "tidyr",          # v1.3.1  — data reshaping
   "ggpubr",         # v0.4.0  — publication-ready figures
-  "gridExtra",      # v2.3    — figure layout
-  "viridis",        # v0.6.2  — colour scales
-  "ggsci",          # v2.9    — journal colour palettes
-  "multcompView"    # v0.1-8  — multiple comparison display
+  "gridExtra"       # v2.3    — figure layout
 ))
+
+# Import Times New Roman font (run once)
+extrafont::font_import()
+extrafont::loadfonts()
 ```
 
 ### Run order
@@ -138,27 +155,25 @@ Execute scripts in the following sequence to reproduce all results:
 
 ```r
 # Step 1: Individual domain analyses
-source("1_study_DO.R")
-source("1_study_EC.R")
-source("1_study_Redox.R")
-source("1_study_Soil_Oxygen.R")
-source("4_study_Paint_Belowground.R")
-source("4_study_Paint_aboveground.R")
-source("5_study_Soil.R")
-source("6_study_yield.R")
+source("analysis/1_study_DO.R")
+source("analysis/1_study_EC.R")
+source("analysis/1_study_Redox.R")
+source("analysis/1_study_Soil_Oxygen.R")
+source("analysis/4_study_Paint_Belowground.R")
+source("analysis/4_study_Paint_aboveground.R")
+source("analysis/5_study_Soil.R")
+source("analysis/6_study_yield.R")
 
 # Step 2: Overall meta-analysis and structural equation modelling
-source("Overall.R")
+source("analysis/Overall.R")
 
-# Step 3: Publication bias
-source("funnel_plot.R")
+# Step 3: Publication bias assessment
+source("analysis/funnel_plot.R")
 
 # Step 4: Generate all manuscript figures
-source("fig1_DO_Eh_9_feb.R")
-source("fig2_9feb.R")
-source("fig3_Oxy_enz_OC.R")
-source("fig4_plant.R")
-source("fig5_Plant_productivity.R")
+source("figures/Fig1.R")     # Fig. 1 — moderator analysis
+source("figures/Fig2.R")     # Fig. 2 — biological cascade
+# Fig. 3 was generated in SPSS AMOS — no R script available
 ```
 
 ---
@@ -172,18 +187,25 @@ Full session details are provided in `session_info.txt`. Key environment:
 | R version | 4.2.1 (2022-06-23) |
 | Platform | aarch64-apple-darwin20 (64-bit) |
 | Operating system | macOS 15.6.1 |
-| Key packages | metafor 3.8-1, meta 6.0-0, ggplot2 3.5.0, dplyr 1.1.4 |
+| Key packages | metafor 3.8-1, meta 6.0-0, ggplot2 3.5.0, dplyr 1.1.4, cowplot 1.1.1 |
 
 ---
 
 ## Key Findings
 
-- Nanobubble irrigation elevated rhizosphere **dissolved oxygen by 66–485%**
-- **Urease activity** increased by 55–203%, enhancing the nitrification cascade
-- **Water-use efficiency** improved by 53–77% under oxygen nanobubbles
-- CO₂ nanobubbles reduced **oxidative stress by 284%**
-- Structural equation modelling identified **photosynthetic function** as the dominant yield driver (β=0.64, R²=0.85)
-- **Crop yield** increased by 42–53% across all crop groups
+- **Moderator hierarchy (Fig. 1):** Gas type, soil texture, generation technology, and cultivation system hierarchically modulated rhizosphere DO enrichment (66–485%), oxidation–reduction potential, and electrical conductivity
+- **Biological cascade (Fig. 2a–i):** Nanobubble irrigation elevated urease activity by 55–203%, improved root architecture and water-use efficiency by 53–77%, enhanced photosynthetic rate by up to 163%, and increased crop yield by 42–53%
+- **Gas-type polarity of ROS (Fig. 2h):** O₂ and ozone nanobubbles induced pro-oxidant responses (+284%); CO₂ nanobubbles reduced oxidative stress by 284%
+- **Causal synthesis (Fig. 3):** Structural equation modelling identified photosynthetic function as the dominant yield driver (β = 0.64, R² = 0.85), with the causal cascade proceeding from rhizosphere redox → soil biogeochemistry → root architecture → photosynthesis → yield
+
+---
+
+## Supplementary Data
+
+| File | Contents |
+|---|---|
+| `Table_S1.xlsx` — Sheet 1 (Figure 1) | All effect sizes for Fig. 1 moderator analysis (73 subgroup estimates) |
+| `Table_S1.xlsx` — Sheet 2 (Figure 2) | All effect sizes for Fig. 2 biological cascade (88 estimates) |
 
 ---
 
@@ -191,15 +213,16 @@ Full session details are provided in `session_info.txt`. Key environment:
 
 If you use this data or code, please cite:
 
-> Rehman, M.M.U., Khattak, S., Zhao, L., Zhu, Y., Xiao, Y.-L., Tao, H.-Y., Iqbal, A., Abrar, M., Zhu, L., Sun, H., Khan, W., Wang, Y.-B., Fu, Y., Mo, F.\*, & Xiong, Y.-C.\* Nanobubble irrigation enhances crop water productivity by rebalancing rhizosphere redox, biogeochemistry and hydraulic function: A systematic meta-analysis. *Nature Water*. https://doi.org/10.5281/zenodo.19213026
+> Rehman, M.M.U., Khattak, S., Zhao, L., Zhu, Y., Xiao, Y.-L., Tao, H.-Y., Iqbal, A., Abrar, M., Zhu, L., Sun, H., Khan, W., Wang, Y.-B., Fu, Y., Mo, F.\*, & Xiong, Y.-C.\* (2026). Nanobubble irrigation enhances crop water productivity by rebalancing rhizosphere redox, biogeochemistry and hydraulic function: A systematic meta-analysis. *Nature Water*. https://doi.org/10.5281/zenodo.19213026
 
 ---
 
 ## Data and Code Availability Statement
 
-*(For inclusion in the Nature Water manuscript)*
-
-> All R scripts and data supporting this study are openly available on GitHub at https://github.com/Maqsood9000/nature-water-meta-analysis-2026 and are permanently archived at Zenodo (https://doi.org/10.5281/zenodo.19213026).
+All R scripts and data supporting this study are openly available on GitHub at  
+https://github.com/Maqsood9000/nature-water-meta-analysis-2026  
+and are permanently archived at Zenodo (https://doi.org/10.5281/zenodo.19213026).  
+Complete effect sizes, 95% confidence intervals, P values, and heterogeneity statistics for all meta-analytic subgroup analyses are provided in Supplementary Data 1 (`Table_S1.xlsx`).
 
 ---
 
