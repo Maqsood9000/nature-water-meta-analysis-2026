@@ -2,7 +2,7 @@
 
 **Running title:** A Systematic Meta-Analysis
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19213026.svg)](https://doi.org/10.5281/zenodo.19213026)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20020457.svg)](https://doi.org/10.5281/zenodo.20020457)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/Maqsood9000/nature-water-meta-analysis-2026/blob/main/LICENSE)
 [![Journal: Nature Water](https://img.shields.io/badge/Journal-Nature%20Water-blue.svg)]()
 [![R version](https://img.shields.io/badge/R-4.2.1-276DC3.svg)](https://www.r-project.org/)
@@ -213,7 +213,7 @@ Full session details are provided in `session_info.txt`. Key environment:
 
 If you use this data or code, please cite:
 
-> Rehman, M.M.U., Khattak, S., Zhao, L., Zhu, Y., Xiao, Y.-L., Tao, H.-Y., Iqbal, A., Abrar, M., Zhu, L., Sun, H., Khan, W., Wang, Y.-B., Fu, Y., Mo, F.\*, & Xiong, Y.-C.\* (2026). Nanobubble irrigation enhances crop water productivity by rebalancing rhizosphere redox, biogeochemistry and hydraulic function: A systematic meta-analysis. *Nature Water*. https://doi.org/10.5281/zenodo.19213026
+> Rehman, M.M.U., Khattak, S., Zhao, L., Zhu, Y., Xiao, Y.-L., Tao, H.-Y., Iqbal, A., Abrar, M., Zhu, L., Sun, H., Khan, W., Wang, Y.-B., Fu, Y., Mo, F.\*, & Xiong, Y.-C.\* (2026). Nanobubble irrigation enhances crop water productivity by rebalancing rhizosphere redox, biogeochemistry and hydraulic function: A systematic meta-analysis. *Nature Water*. https://doi.org/10.5281/zenodo.20020457
 
 ---
 
@@ -221,7 +221,7 @@ If you use this data or code, please cite:
 
 All R scripts and data supporting this study are openly available on GitHub at  
 https://github.com/Maqsood9000/nature-water-meta-analysis-2026  
-and are permanently archived at Zenodo (https://doi.org/10.5281/zenodo.19213026).  
+and are permanently archived at Zenodo (https://doi.org/10.5281/zenodo.20020457).  
 Complete effect sizes, 95% confidence intervals, P values, and heterogeneity statistics for all meta-analytic subgroup analyses are provided in Supplementary Data 1 (`Table_S1.xlsx`).
 
 ---
